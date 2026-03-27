@@ -7,25 +7,26 @@
 
     <script>
         /* ============================================================
-           1. CONFIGURACIÓN - EDITA AQUÍ EL NOMBRE DE TU ARCHIVO
+           1. CONFIGURACIÓN DE COLORES Y LINKS
            ============================================================ */
-        const ARCHIVO_INVITACION = "index.html"; 
+        const CONFIG = {
+            color_oro: "#d4b483",
+            color_fondo: "#fcfaf8",
+            color_texto: "#2d2d2d",
+            
+            // Si el historial falla, ¿a qué página debe ir por defecto?
+            pagina_principal: "index.html" 
+        };
 
         const DATOS_HOTEL = {
             nombre: "Hotel St. Regis Luxury",
             foto_hero: "https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1",
             direccion: "Av. Paseo de la Reforma 439, Cuauhtémoc, CDMX.",
-            codigo_descuento: "BODA L&A 2026",
-            fecha_limite: "15 de Febrero",
+            codigo: "BODA L&A 2026",
+            limite: "15 de Febrero",
             telefono: "+525512345678",
             link_web: "https://www.marriott.com",
-            iframe_mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539572186595!2d-99.17201722394582!3d19.432281481845196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5f5f5f5%3A0x5f5f5f5f5f5f5f5f!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses-419!2smx!4v1710000000000"
-        };
-
-        const COLORES = {
-            dorado: "#d4b483",
-            fondo: "#fcfaf8",
-            texto: "#2d2d2d"
+            iframe_mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539572836261!2d-99.1712214!3d19.4282033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35fbd093e1%3A0x63345862d5e16542!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses-419!2smx!4v1710000000000"
         };
     </script>
 
@@ -34,32 +35,47 @@
     <style>
         :root { --oro: #d4b483; --fondo: #fcfaf8; --texto: #2d2d2d; }
         body { margin: 0; padding: 0; background-color: #1a1a1a; color: var(--texto); font-family: 'Montserrat', sans-serif; text-align: center; }
-        .hotel-wrapper { max-width: 480px; margin: 0 auto; background-color: var(--fondo); min-height: 100vh; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
-        .hotel-hero { height: 300px; background-position: center; background-size: cover; display: flex; align-items: center; justify-content: center; position: relative; }
+        
+        .hotel-wrapper { 
+            max-width: 480px; margin: 0 auto; background-color: var(--fondo); 
+            min-height: 100vh; box-shadow: 0 0 40px rgba(0,0,0,0.5); 
+        }
+
+        .hotel-hero { 
+            height: 300px; background-position: center; background-size: cover; 
+            display: flex; align-items: center; justify-content: center; position: relative; 
+        }
         .hotel-hero::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); }
+        
         h1 { font-family: 'Cormorant Garamond', serif; color: white; font-size: 2.5rem; letter-spacing: 3px; position: relative; z-index: 1; margin: 0; }
+        
         section { padding: 40px 20px; }
-        .hotel-card { background: white; border-radius: 12px; padding: 30px 20px; border: 1px solid #f2ede4; margin-top: -50px; position: relative; z-index: 2; width: 85%; margin-left: auto; margin-right: auto; }
-        .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0; color: var(--oro); }
+        
+        .hotel-card { 
+            background: white; border-radius: 12px; padding: 30px 20px; 
+            border: 1px solid #f2ede4; margin-top: -50px; position: relative; 
+            z-index: 2; width: 85%; margin-left: auto; margin-right: auto; 
+        }
+
         .detalles { font-size: 0.9rem; line-height: 1.8; color: #555; text-align: left; margin: 20px 0; }
-        .btn-action { display: block; background: var(--texto); color: white; padding: 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
-        .btn-call { background: var(--oro); }
+
+        .btn-action { 
+            display: block; background: var(--texto); color: white; 
+            padding: 18px; border-radius: 8px; text-decoration: none; 
+            font-weight: bold; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; 
+        }
+
         .map-box { width: 100%; height: 250px; background: #eee; border-radius: 8px; margin-top: 20px; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
+
         .footer-back { margin-top: 40px; padding-bottom: 60px; }
         
+        /* BOTÓN UNIVERSAL */
         .back-link { 
-            display: inline-block; 
-            color: var(--oro); 
-            text-decoration: none; 
-            font-size: 0.8rem; 
-            letter-spacing: 2px; 
-            font-weight: bold; 
-            border: 1px solid var(--oro); 
-            padding: 12px 25px; 
-            border-radius: 30px; 
-            cursor: pointer;
-            background: none;
+            display: inline-block; color: var(--oro); text-decoration: none; 
+            font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; 
+            border: 1px solid var(--oro); padding: 12px 25px; border-radius: 30px; 
+            cursor: pointer; background: none;
         }
     </style>
 </head>
@@ -67,50 +83,60 @@
 
     <div class="hotel-wrapper">
         <div id="hero-img" class="hotel-hero"><h1>Hospedaje</h1></div>
+        
         <section>
             <div class="hotel-card">
                 <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--oro); font-weight: bold;">HOTEL SEDE</p>
-                <h2 id="hotel-name" class="hotel-name"></h2>
+                <h2 id="hotel-name" style="font-family: 'Cormorant Garamond'; color: var(--oro); font-size: 1.8rem;"></h2>
                 <div class="detalles">
                     <p><strong>📍 Ubicación:</strong> <span id="txt-dir"></span></p>
                     <p><strong>🔑 Código:</strong> <span id="txt-cod"></span></p>
                     <p><strong>📅 Límite:</strong> <span id="txt-lim"></span></p>
                 </div>
-                <a id="link-tel" href="#" class="btn-action btn-call">LLAMAR PARA RESERVAR</a>
+                <a id="link-tel" href="#" class="btn-action" style="background: var(--oro);">LLAMAR PARA RESERVAR</a>
                 <a id="link-web" href="#" target="_blank" class="btn-action">RESERVAR EN LÍNEA</a>
             </div>
         </section>
+
         <section>
             <h3 style="font-family: 'Cormorant Garamond'; font-size: 1.5rem;">Ubicación</h3>
             <div class="map-box"><iframe id="mapa-frame" src="" allowfullscreen="" loading="lazy"></iframe></div>
         </section>
+
         <div class="footer-back">
-            <button onclick="regresarAhora()" class="back-link">← VOLVER A LA INVITACIÓN</button>
+            <button onclick="regresarUniversal()" class="back-link">← VOLVER</button>
         </div>
     </div>
 
     <script>
-        // Cargar Datos Dinámicos
+        // Cargar Colores dinámicamente
+        const r = document.documentElement.style;
+        r.setProperty('--oro', CONFIG.color_oro);
+        r.setProperty('--fondo', CONFIG.color_fondo);
+        r.setProperty('--texto', CONFIG.color_texto);
+
+        // Cargar Datos del Hotel
         document.getElementById('hero-img').style.backgroundImage = `url('${DATOS_HOTEL.foto_hero}')`;
         document.getElementById('hotel-name').innerText = DATOS_HOTEL.nombre;
         document.getElementById('txt-dir').innerText = DATOS_HOTEL.direccion;
-        document.getElementById('txt-cod').innerText = DATOS_HOTEL.codigo_descuento;
-        document.getElementById('txt-lim').innerText = DATOS_HOTEL.fecha_limite;
+        document.getElementById('txt-cod').innerText = DATOS_HOTEL.codigo;
+        document.getElementById('txt-lim').innerText = DATOS_HOTEL.limite;
         document.getElementById('link-tel').href = `tel:${DATOS_HOTEL.telefono}`;
         document.getElementById('link-web').href = DATOS_HOTEL.link_web;
         document.getElementById('mapa-frame').src = DATOS_HOTEL.iframe_mapa;
 
-        const r = document.documentElement.style;
-        r.setProperty('--oro', COLORES.dorado);
-        r.setProperty('--fondo', COLORES.fondo);
-        r.setProperty('--texto', COLORES.texto);
-
-        // FUNCIÓN DE SALTO REAL
-        function regresarAhora() {
-            // Guardamos que el sobre ya está abierto
+        /* LA FUNCIÓN QUE SOLUCIONA TODO */
+        function regresarUniversal() {
+            // 1. Avisar que el sobre debe estar abierto (si es que viene de ahí)
             sessionStorage.setItem('sobreAbierto', 'true');
-            // Forzamos el cambio de página al archivo de la invitación
-            window.location.assign(ARCHIVO_INVITACION);
+
+            // 2. Intentar regresar de verdad
+            if (document.referrer && document.referrer !== "" && document.referrer !== window.location.href) {
+                window.location.href = document.referrer;
+            } else {
+                // 3. Si no hay historial (abrió el link directo), mandarlo a la página principal
+                window.location.href = CONFIG.pagina_principal;
+            }
         }
     </script>
 </body>
