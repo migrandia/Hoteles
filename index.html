@@ -25,6 +25,7 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.5);
         }
 
+        /* Banner Superior con Imagen Fija */
         .hotel-hero {
             height: 300px;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
@@ -37,6 +38,7 @@
 
         section { padding: 40px 20px; }
 
+        /* Tarjeta de Información */
         .hotel-card {
             background: var(--blanco);
             border-radius: 12px;
@@ -62,6 +64,7 @@
 
         .btn-call { background: var(--oro); }
 
+        /* Mapa Simulado */
         .map-box {
             width: 100%; height: 250px; background: #eee; border-radius: 8px;
             margin-top: 20px; overflow: hidden;
@@ -69,24 +72,8 @@
 
         iframe { width: 100%; height: 100%; border: none; }
 
-        .footer-back { margin-top: 40px; padding-bottom: 60px; }
-        
-        /* Botón de volver tipo botón real */
-        .back-link { 
-            display: inline-block;
-            color: var(--oro); 
-            text-decoration: none; 
-            font-size: 0.75rem; 
-            letter-spacing: 2px; 
-            font-weight: bold; 
-            padding: 12px 25px;
-            border: 1px solid var(--oro);
-            border-radius: 30px;
-            cursor: pointer;
-            background: transparent;
-            transition: 0.3s;
-        }
-        .back-link:active { background: var(--oro); color: white; }
+        .footer-back { margin-top: 40px; padding-bottom: 40px; }
+        .back-link { color: var(--oro); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -104,7 +91,8 @@
                 <div class="detalles">
                     <p><strong>📍 Ubicación:</strong> Av. Paseo de la Reforma 439, Cuauhtémoc, CDMX.</p>
                     <p><strong>🔑 Código de Descuento:</strong> BODA L&A 2026</p>
-                    <p><strong>📅 Fecha Límite:</strong> Reservar antes del 15 de Octubre.</p>
+                    <p><strong>📅 Fecha Límite:</strong> Reservar antes del 15 de Febrero.</p>
+                    <p>Para obtener la tarifa preferencial, por favor menciona el nombre de la boda al realizar tu reservación telefónica.</p>
                 </div>
 
                 <a href="tel:+525512345678" class="btn-action btn-call">LLAMAR PARA RESERVAR</a>
@@ -115,21 +103,14 @@
         <section>
             <h3 style="font-family: 'Cormorant Garamond'; font-size: 1.5rem;">Ubicación</h3>
             <div class="map-box">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539572459438!2d-99.1718854!3d19.4285002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff4961555555%3A0xc0f1b250523e1e93!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses!2smx!4v1710000000000!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539575003554!2d-99.17188702388337!3d19.432243540356233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5cc15c7%3A0xcca71676691c5195!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
 
         <div class="footer-back">
-            <a href="index.html" onclick="marcarAbierto()" class="back-link">← VOLVER A LA INVITACIÓN</a>
+            <a href="javascript:history.back()" class="back-link">← VOLVER A LA INVITACIÓN</a>
         </div>
     </div>
-
-    <script>
-        function marcarAbierto() {
-            // Antes de irse, le avisa a la invitación que el sobre ya debe estar abierto
-            sessionStorage.setItem('sobreAbierto', 'true');
-        }
-    </script>
 
 </body>
 </html>
