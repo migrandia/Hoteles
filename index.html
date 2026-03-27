@@ -7,7 +7,7 @@
 
     <script>
         /* ==========================================
-           1. ENLACES Y DATOS - EDITA AQUÍ
+           1. CONFIGURACIÓN - EDITA AQUÍ
            ========================================== */
         const DATOS_HOTEL = {
             nombre: "Hotel St. Regis Luxury",
@@ -17,39 +17,50 @@
             fecha_limite: "15 de Octubre de 2026",
             telefono: "+525512345678",
             link_reserva_web: "https://www.marriott.com",
-            iframe_mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539572922137!2d-99.17361402390312!3d19.432244081845197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x108928d5979bc7ad!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx",
+            iframe_mapa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.539572455171!2d-99.171261!3d19.427021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff496e5746f3%3A0x6331904a0e30349b!2sThe%20St.%20Regis%20Mexico%20City!5e0!3m2!1ses!2smx!4v1700000000000",
             
-            // IMPORTANTE: Pon aquí el link de tu invitación (ejemplo: index.html o tu link de GitHub)
+            // ESCRIBE AQUÍ EL NOMBRE DE TU ARCHIVO DE INVITACIÓN (Ej: index.html)
             url_invitacion: "index.html" 
         };
 
         const COLORES = {
             dorado: "#d4b483",
-            fondo_suave: "#fcfaf8",
-            texto_oscuro: "#2d2d2d",
-            blanco: "#ffffff"
+            fondo: "#fcfaf8",
+            texto: "#2d2d2d"
         };
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --oro: #d4b483; --fondo: #fcfaf8; --texto: #2d2d2d; --blanco: #ffffff; }
+        :root { --oro: #d4b483; --fondo: #fcfaf8; --texto: #2d2d2d; }
         body { margin: 0; padding: 0; background-color: #1a1a1a; color: var(--texto); font-family: 'Montserrat', sans-serif; text-align: center; }
-        .hotel-wrapper { max-width: 480px; margin: 0 auto; background-color: var(--fondo); min-height: 100vh; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
-        .hotel-hero { height: 300px; background-position: center !important; background-size: cover !important; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hotel-wrapper { max-width: 480px; margin: 0 auto; background-color: var(--fondo); min-height: 100vh; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+        .hotel-hero { height: 300px; background-position: center; background-size: cover; display: flex; align-items: center; justify-content: center; position: relative; }
         .hotel-hero::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); }
-        h1 { font-family: 'Cormorant Gramamond', serif; color: white; font-size: 2.5rem; letter-spacing: 3px; position: relative; z-index: 1; }
+        h1 { font-family: 'Cormorant Garamond', serif; color: white; font-size: 2.5rem; letter-spacing: 3px; position: relative; z-index: 1; }
         section { padding: 40px 20px; }
-        .hotel-card { background: var(--blanco); border-radius: 12px; padding: 30px 20px; border: 1px solid #f2ede4; margin-top: -50px; position: relative; z-index: 2; width: 85%; margin-left: auto; margin-right: auto; }
+        .hotel-card { background: white; border-radius: 12px; padding: 30px 20px; border: 1px solid #f2ede4; margin-top: -50px; position: relative; z-index: 2; width: 85%; margin-left: auto; margin-right: auto; }
         .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 10px 0; color: var(--oro); }
         .detalles { font-size: 0.9rem; line-height: 1.8; color: #555; text-align: left; margin: 20px 0; }
-        .btn-action { display: block; background: var(--texto); color: white; padding: 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; transition: 0.3s; }
+        .btn-action { display: block; background: var(--texto); color: white; padding: 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8rem; letter-spacing: 2px; margin-top: 15px; }
         .btn-call { background: var(--oro); }
         .map-box { width: 100%; height: 250px; background: #eee; border-radius: 8px; margin-top: 20px; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
         .footer-back { margin-top: 40px; padding-bottom: 60px; }
-        .back-link { display: inline-block; color: var(--oro); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; font-weight: bold; cursor: pointer; border: 1px solid var(--oro); padding: 12px 25px; border-radius: 30px; background: none; transition: 0.3s; }
+        
+        /* Botón de regreso como enlace puro */
+        .back-link { 
+            display: inline-block; 
+            color: var(--oro); 
+            text-decoration: none; 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            font-weight: bold; 
+            border: 1px solid var(--oro); 
+            padding: 12px 25px; 
+            border-radius: 30px; 
+        }
     </style>
 </head>
 <body>
@@ -74,13 +85,13 @@
             <div class="map-box"><iframe id="mapa-frame" src="" allowfullscreen="" loading="lazy"></iframe></div>
         </section>
         <div class="footer-back">
-            <a href="javascript:void(0)" onclick="forzarRegreso()" class="back-link">← VOLVER A LA INVITACIÓN</a>
+            <a id="link-volver" href="#" onclick="marcarAbierto()" class="back-link">← VOLVER A LA INVITACIÓN</a>
         </div>
     </div>
 
     <script>
-        // Cargar Datos Dinámicos
-        document.getElementById('hero-img').style.background = `url('${DATOS_HOTEL.foto_hero}')`;
+        // Cargar Datos
+        document.getElementById('hero-img').style.backgroundImage = `url('${DATOS_HOTEL.foto_hero}')`;
         document.getElementById('hotel-name').innerText = DATOS_HOTEL.nombre;
         document.getElementById('txt-dir').innerText = DATOS_HOTEL.direccion;
         document.getElementById('txt-cod').innerText = DATOS_HOTEL.codigo_descuento;
@@ -88,18 +99,17 @@
         document.getElementById('link-tel').href = `tel:${DATOS_HOTEL.telefono}`;
         document.getElementById('link-web').href = DATOS_HOTEL.link_reserva_web;
         document.getElementById('mapa-frame').src = DATOS_HOTEL.iframe_mapa;
+        document.getElementById('link-volver').href = DATOS_HOTEL.url_invitacion;
 
+        // Cargar Colores
         const r = document.documentElement.style;
         r.setProperty('--oro', COLORES.dorado);
-        r.setProperty('--fondo', COLORES.fondo_suave);
-        r.setProperty('--texto', COLORES.texto_oscuro);
-        r.setProperty('--blanco', COLORES.blanco);
+        r.setProperty('--fondo', COLORES.fondo);
+        r.setProperty('--texto', COLORES.texto);
 
-        function forzarRegreso() {
-            // Guardamos la orden de que la invitación se abra sola
+        function marcarAbierto() {
+            // Le avisamos a la memoria que el sobre ya se abrió
             sessionStorage.setItem('sobreAbierto', 'true');
-            // Mandamos al usuario directamente a la URL de la invitación
-            window.location.href = DATOS_HOTEL.url_invitacion;
         }
     </script>
 </body>
